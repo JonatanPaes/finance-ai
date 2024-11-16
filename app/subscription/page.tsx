@@ -1,6 +1,3 @@
-
-export default function Subscription() {
-  return (
-    <div>Subscription</div>
-  )
+export default function SubscriptionPage() {
+  return <div>SubscriptionPage</div>
 }
