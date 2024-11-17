@@ -12,7 +12,7 @@ import { db } from '@/app/_lib/prisma'
 
 import { upsertTransactionSchema } from './schema'
 
-interface AddTransactionParams {
+interface UpsertTransactionParams {
   id?: string
   name: string
   amount: number
@@ -22,7 +22,7 @@ interface AddTransactionParams {
   date: Date
 }
 
-export async function addTransaction(params: AddTransactionParams) {
+export async function upsertTransaction(params: UpsertTransactionParams) {
   upsertTransactionSchema.parse(params)
   const { userId } = await auth()
 
@@ -30,8 +30,12 @@ export async function addTransaction(params: AddTransactionParams) {
     throw new Error('Unauthorized')
   }
 
-  await db.transaction.create({
-    data: { ...params, userId },
+  await db.transaction.upsert({
+    update: { ...params, userId },
+    create: { ...params, userId },
+    where: {
+      id: params?.id ?? '',
+    },
   })
   revalidatePath('/transactions')
 }
