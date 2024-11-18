@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation'
 
 import { Navbar } from '../_components/navbar'
 import { getDashboard } from '../_data/get-dashboard'
+import { ExpensesPerCategory } from './_components/expenses-per-category'
 import { SummaryCards } from './_components/summary-cards'
 import { TransactionsPieChart } from './_components/transactions-pie-chart'
 
@@ -40,6 +41,10 @@ export default async function Home({ searchParams: { month } }: HomeProps) {
 
             <div className="grid h-full grid-cols-3 grid-rows-1 gap-6 overflow-hidden">
               <TransactionsPieChart {...dashboard} />
+
+              <ExpensesPerCategory
+                expensesPerCategory={dashboard.totalExpensePerCategory}
+              />
             </div>
           </div>
         </div>
