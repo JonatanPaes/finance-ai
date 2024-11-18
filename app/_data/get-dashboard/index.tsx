@@ -10,9 +10,11 @@ import type {
 
 export async function getDashboard(month: string) {
   const { userId } = await auth()
+
   if (!userId) {
     throw new Error('Unauthorized')
   }
+
   const where = {
     userId,
     date: {
@@ -20,6 +22,7 @@ export async function getDashboard(month: string) {
       lt: new Date(`2024-${month}-31`),
     },
   }
+
   const depositsTotal = Number(
     (
       await db.transaction.aggregate({
