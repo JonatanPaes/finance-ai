@@ -9,7 +9,7 @@ import { AiReportButton } from './_components/ai-report-button'
 import { ExpensesPerCategory } from './_components/expenses-per-category'
 import { LastTransactions } from './_components/last-transactions'
 import { SummaryCards } from './_components/summary-cards'
-import TimeSelect from './_components/time-select'
+import { TimeSelect } from './_components/time-select'
 import { TransactionsPieChart } from './_components/transactions-pie-chart'
 
 interface HomeProps {

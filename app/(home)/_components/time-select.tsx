@@ -11,21 +11,21 @@ import {
 } from '@/app/_components/ui/select'
 
 const MONTH_OPTIONS = [
-  { value: '01', label: 'January' },
-  { value: '02', label: 'February' },
-  { value: '03', label: 'March' },
-  { value: '04', label: 'April' },
-  { value: '05', label: 'May' },
-  { value: '06', label: 'June' },
-  { value: '07', label: 'July' },
-  { value: '08', label: 'August' },
-  { value: '09', label: 'September' },
-  { value: '10', label: 'October' },
-  { value: '11', label: 'November' },
-  { value: '12', label: 'December' },
+  { value: '01', label: 'January', display: 'Janeiro' },
+  { value: '02', label: 'February', display: 'Fevereiro' },
+  { value: '03', label: 'March', display: 'Março' },
+  { value: '04', label: 'April', display: 'Abril' },
+  { value: '05', label: 'May', display: 'Maio' },
+  { value: '06', label: 'June', display: 'Junho' },
+  { value: '07', label: 'July', display: 'Julho' },
+  { value: '08', label: 'August', display: 'Agosto' },
+  { value: '09', label: 'September', display: 'Setembro' },
+  { value: '10', label: 'October', display: 'Outubro' },
+  { value: '11', label: 'November', display: 'Novembro' },
+  { value: '12', label: 'December', display: 'Dezembro' },
 ]
 
-const TimeSelect = () => {
+export function TimeSelect() {
   const { push } = useRouter()
   const searchParams = useSearchParams()
   const month = searchParams.get('month')
@@ -45,12 +45,10 @@ const TimeSelect = () => {
       <SelectContent>
         {MONTH_OPTIONS.map((option) => (
           <SelectItem key={option.value} value={option.value}>
-            {option.label}
+            {option.display}
           </SelectItem>
         ))}
       </SelectContent>
     </Select>
   )
 }
-
-export default TimeSelect

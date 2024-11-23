@@ -24,6 +24,7 @@ interface UpsertTransactionParams {
 
 export async function upsertTransaction(params: UpsertTransactionParams) {
   upsertTransactionSchema.parse(params)
+
   const { userId } = await auth()
 
   if (!userId) {

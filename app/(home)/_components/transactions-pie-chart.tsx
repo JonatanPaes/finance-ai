@@ -61,47 +61,76 @@ export function TransactionsPieChart({
     },
   ]
 
+  const hasNoData =
+    depositsTotal === 0 &&
+    expensesTotal === 0 &&
+    investmentsTotal === 0 &&
+    Object.values(typesPercentage).every((value) => isNaN(value) || value === 0)
+
   return (
     <Card className="flex flex-col p-6">
-      <CardContent className="flex-1 pb-0">
-        <ChartContainer
-          config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
-        >
-          <PieChart>
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
+      {hasNoData ? (
+        <div className="flex h-full flex-col items-center justify-center text-center text-muted-foreground">
+          <p className="text-xl font-medium">Nenhuma transação encontrada</p>
+          <p className="text-sm">
+            Adicione novas transações para visualizar os dados.
+          </p>
+        </div>
+      ) : (
+        <>
+          <CardContent className="flex-1 pb-0">
+            <ChartContainer
+              config={chartConfig}
+              className="mx-auto aspect-square max-h-[250px]"
+            >
+              <PieChart>
+                <ChartTooltip
+                  cursor={false}
+                  content={<ChartTooltipContent hideLabel />}
+                />
+                <Pie
+                  data={chartData}
+                  dataKey="amount"
+                  nameKey="type"
+                  innerRadius={60}
+                />
+              </PieChart>
+            </ChartContainer>
+          </CardContent>
+
+          <div className="space-y-3">
+            <PercentageItem
+              icon={<TrendingUpIcon size={16} className="text-primary" />}
+              title="Receita"
+              value={
+                isNaN(typesPercentage[TransactionType.DEPOSIT])
+                  ? 0
+                  : typesPercentage[TransactionType.DEPOSIT]
+              }
             />
-            <Pie
-              data={chartData}
-              dataKey="amount"
-              nameKey="type"
-              innerRadius={60}
+
+            <PercentageItem
+              icon={<TrendingDownIcon size={16} className="text-red-500" />}
+              title="Despesas"
+              value={
+                isNaN(typesPercentage[TransactionType.EXPENSE])
+                  ? 0
+                  : typesPercentage[TransactionType.EXPENSE]
+              }
             />
-          </PieChart>
-        </ChartContainer>
-      </CardContent>
 
-      <div className="space-y-3">
-        <PercentageItem
-          icon={<TrendingUpIcon size={16} className="text-primary" />}
-          title="Receita"
-          value={typesPercentage[TransactionType.DEPOSIT]}
-        />
-
-        <PercentageItem
-          icon={<TrendingDownIcon size={16} className="text-red-500" />}
-          title="Despesas"
-          value={typesPercentage[TransactionType.EXPENSE]}
-        />
-
-        <PercentageItem
-          icon={<PiggyBankIcon size={16} />}
-          title="Investido"
-          value={typesPercentage[TransactionType.INVESTMENT]}
-        />
-      </div>
+            <PercentageItem
+              icon={<PiggyBankIcon size={16} />}
+              title="Investido"
+              value={
+                isNaN(typesPercentage[TransactionType.INVESTMENT])
+                  ? 0
+                  : typesPercentage[TransactionType.INVESTMENT]
+              }
+            />
+          </div>
+        </>
+      )}
     </Card>
   )
 }

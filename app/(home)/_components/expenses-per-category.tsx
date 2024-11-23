@@ -11,6 +11,10 @@ interface ExpensesPerCategoryProps {
 export function ExpensesPerCategory({
   expensesPerCategory,
 }: ExpensesPerCategoryProps) {
+  const hasNoData =
+    expensesPerCategory.length === 0 ||
+    expensesPerCategory.every((category) => category.percentageOfTotal === 0)
+
   return (
     <ScrollArea className="col-span-2 h-full rounded-md border pb-6">
       <CardHeader>
@@ -18,17 +22,28 @@ export function ExpensesPerCategory({
       </CardHeader>
 
       <CardContent className="space-y-6">
-        {expensesPerCategory.map((category) => (
-          <div key={category.category} className="space-y-2">
-            <div className="flex w-full justify-between">
-              <p className="text-sm font-bold">
-                {TRANSACTION_CATEGORY_LABELS[category.category]}
-              </p>
-              <p className="text-sm font-bold">{category.percentageOfTotal}%</p>
-            </div>
-            <Progress value={category.percentageOfTotal} />
+        {hasNoData ? (
+          <div className="flex flex-col items-center justify-center text-center text-muted-foreground">
+            <p className="text-lg font-medium">Nenhum gasto encontrado</p>
+            <p className="text-sm">
+              Não há despesas registradas para esta categoria.
+            </p>
           </div>
-        ))}
+        ) : (
+          expensesPerCategory.map((category) => (
+            <div key={category.category} className="space-y-2">
+              <div className="flex w-full justify-between">
+                <p className="text-sm font-bold">
+                  {TRANSACTION_CATEGORY_LABELS[category.category]}
+                </p>
+                <p className="text-sm font-bold">
+                  {category.percentageOfTotal}%
+                </p>
+              </div>
+              <Progress value={category.percentageOfTotal} />
+            </div>
+          ))
+        )}
       </CardContent>
     </ScrollArea>
   )
