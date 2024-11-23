@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+  <h1>💰 Finance AI</h1>
+  
+  ![GitHub repo size](https://img.shields.io/github/repo-size/JonatanPaes/finance-ai)
+  ![GitHub language count](https://img.shields.io/github/languages/count/JonatanPaes/finance-ai)
+  ![GitHub license](https://img.shields.io/github/license/JonatanPaes/finance-ai)
+</div>
 
-## Getting Started
+## 📋 Descrição
 
-First, run the development server:
+Finance AI é uma aplicação de gerenciamento financeiro que permite aos usuários organizar suas finanças de forma simples e eficiente. A plataforma oferece funcionalidades para adicionar transações, visualizar gráficos e relatórios, e acessar diferentes planos de assinatura.
 
+## 🚀 Tecnologias Utilizadas
+
+- [Next.js](https://nextjs.org/)
+- [Prisma](https://www.prisma.io/)
+- [Shadcn](https://shadcn.dev/)
+- [OpenAI](https://openai.com/)
+- [Clerk](https://clerk.dev/)
+- [Neon](https://neon.tech/)
+- [Stripe](https://stripe.com/)
+- [React Hook Form](https://react-hook-form.com/)
+- [Zod](https://zod.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Husky](https://typicode.github.io/husky/)
+
+
+## 🛠️ Pré-requisitos
+
+- Node.js (versão 22.11.0)
+- npm ou yarn
+- Banco de dados PostgreSQL
+- Conta no Clerk
+- Conta no Stripe
+
+## ⚙️ Como Executar
+
+1. **Clone o repositório:**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git https://github.com/JonatanPaes/finance-ai.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Acesse a pasta do projeto:**
+```bash
+cd finance-ai
+```
+3. **Configure as variáveis de ambiente:**
+```bash
+cp .env .env.local
+```
+Preencha as variáveis necessárias do arquivo `.env.example` no arquivo `.env`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. **Instale as dependências:**
+```bash
+npm install
+# ou
+yarn install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+5. **Execute as migrações do Prisma:**
+```bash
+npx prisma migrate dev
+```
 
-## Learn More
+6. **Execute Docker:**
+```bash
+docker-compose up -d
+```
+Caso prefira usar Docker, basta executar o comando e configurar a variável de ambiente `DATABASE_URL` no arquivo `.env`
 
-To learn more about Next.js, take a look at the following resources:
+7. **Execute o projeto:**
+```bash
+npm run start
+# ou
+yarn start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+O projeto estará disponível em `http://localhost:3000`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📱 Preview da Aplicação
 
-## Deploy on Vercel
+<div align="center">
+  <img alt="Demonstração do Ignite Gym" src="./preview/finance-ai.gif" width="50%" height="50%" />
+</div>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📄 Licença
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Este projeto está sob a licença MIT. Consulte o arquivo [LICENSE](./LICENSE) para mais detalhes.
+
+## 👨‍💻 Autor
+
+Feito por Jonatán Paes
+
+[![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jonatanpaes182/)
