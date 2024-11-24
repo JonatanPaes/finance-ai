@@ -43,7 +43,7 @@ export default async function Home({ searchParams: { month } }: HomeProps) {
       <div className="h-[calc(100vh-65px)]">
         <ScrollArea className="h-full">
           <div className="flex min-h-full flex-col p-6">
-            <div className="mb-6 flex justify-between">
+            <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-center">
               <h1 className="text-2xl font-bold">Dashboard</h1>
               <div className="flex items-center gap-3">
                 <AiReportButton

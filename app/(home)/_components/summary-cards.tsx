@@ -24,7 +24,7 @@ export async function SummaryCards({
   userCanAddTransaction,
 }: SummaryCardsProps) {
   return (
-    <div className="space-y-6">
+    <div className="flex flex-col gap-6">
       <SummaryCard
         icon={<WalletIcon size={16} />}
         title="Saldo"
@@ -33,7 +33,7 @@ export async function SummaryCards({
         userCanAddTransaction={userCanAddTransaction}
       />
 
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
         <SummaryCard
           icon={<PiggyBankIcon size={16} />}
           title="Investido"
