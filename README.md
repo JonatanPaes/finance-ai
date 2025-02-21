@@ -91,4 +91,4 @@ Este projeto está sob a licença MIT. Consulte o arquivo [LICENSE](./LICENSE) p
 
 Feito por Jonatán Paes
 
-[![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jonatanpaes182/)
+[![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jonatanpaes/)
